@@ -1,0 +1,36 @@
+# Build directory
+build/
+
+# Compiled binaries / executables
+*.out
+*.exe
+main
+output
+
+# Object files
+*.o
+*.obj
+
+# Assembly output
+*.asm
+
+# Generated files
+generated.o
+generated.asm
+
+# Logs / temp files
+*.log
+*.tmp
+
+# Editor / OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Shell script outputs (if any)
+*.sh~
+
+# Cache
+*.cache

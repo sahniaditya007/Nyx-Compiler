@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include <assert.h>
+#include "lexerf.h"
 #include "parserf.h"
 
 void traverse_tree(Node *node, int is_left, FILE *file){
@@ -12,9 +14,8 @@ void traverse_tree(Node *node, int is_left, FILE *file){
     fprintf(file, "  mov rax, 60\n");
   }
   if(strcmp(node->value, "(") == 0){
-
+    
   }
-
   if(node->type == OPERATOR){
     if(strcmp(node->value, "+") == 0){
       fprintf(file, "  add rdi, %s\n", node->left->value);
@@ -27,9 +28,8 @@ void traverse_tree(Node *node, int is_left, FILE *file){
       node->left = NULL;
       node->right = NULL;
     }
-  }
-
-  if(node->type == INT_LIT){
+  } 
+  if(node->type == INT){
     fprintf(file, "  mov rdi, %s\n", node->value);
   }
   if(strcmp(node->value, ")") == 0){

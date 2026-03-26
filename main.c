@@ -8,19 +8,21 @@
 
 int main(int argc, char *argv[]){
   if(argc < 2){
-    printf("Usage: %s <filename>\n", argv[0]);
-    return 1;
+    printf("Error: correct syntax: %s <filename.unn>\n", argv[0]);
+    exit(1);
   }
 
-  FILE *file = fopen(argv[1], "r");
+  FILE *file;
+  file = fopen(argv[1], "r");
+
   if(!file){
-    printf("Error opening file\n");
-    return 1;
+    printf("ERROR: File not found\n");
+    exit(1);
   }
 
   Token *tokens = lexer(file);
-  
-  for(int i = 0; tokens[i].type != END_OF_TOKENS; i++){
+
+  for(size_t i = 0; tokens[i].type != END_OF_TOKENS; i++){
     print_token(tokens[i]);
   }
 
@@ -33,5 +35,4 @@ int main(int argc, char *argv[]){
     exit(1);
   }
   system("./buildasm.sh");
-  return 0;
 }

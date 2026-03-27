@@ -8,7 +8,7 @@
 
 struct DataItem {
    char *data;   
-char key;
+   char key;
 };
 
 struct DataItem* hashArray[SIZE]; 

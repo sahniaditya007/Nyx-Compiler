@@ -203,6 +203,10 @@ Node *parser(Token *tokens)
             printf("INTEGER: %s\n", current_token->value);
             break;
 
+        case IDENTIFIER:
+        printf("IDENTIFIER\n");
+        break;
+
         case OPERATOR:
         case SEPARATOR:
         case BEGINNING:

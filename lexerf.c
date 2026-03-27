@@ -48,7 +48,7 @@ void print_token(Token token){
 }
 
 Token *generate_number(char *current, int *current_index){
-  Token *token = malloc(sizeof(Token));
+  Token *token = malloc(sizeof(Token) * 12);
   token->type = INT;
   char *value = malloc(sizeof(char) * 8);
   int value_index = 0;
@@ -121,6 +121,7 @@ Token *lexer(FILE *file){
       token = generate_separator_or_operator(current, &current_index, SEPARATOR);
       tokens[tokens_index] = *token;
       tokens_index++;
+      printf("CURRENT %s\n", token->value);
     } else if(current[current_index] == ')'){
       token = generate_separator_or_operator(current, &current_index, SEPARATOR);
       tokens[tokens_index] = *token;
@@ -130,6 +131,15 @@ Token *lexer(FILE *file){
       tokens[tokens_index] = *token;
       tokens_index++;
     } else if(current[current_index] == '-'){
+      token = generate_separator_or_operator(current, &current_index, OPERATOR);
+      tokens[tokens_index] = *token;
+      tokens_index++;
+    } else if (current[current_index] == '*')
+    {
+      token = generate_separator_or_operator(current, &current_index, OPERATOR);
+      tokens[tokens_index] = *token;
+      tokens_index++;
+    } else if (current[current_index] == '/'){
       token = generate_separator_or_operator(current, &current_index, OPERATOR);
       tokens[tokens_index] = *token;
       tokens_index++;
